@@ -223,7 +223,7 @@ def resqui():
         try:
             with Spinner():
                 results = getattr(plugin_instance, plugin_method)(url, branch_hash_or_tag)
-        except Exception as e:
+        except (subprocess.CalledProcessError, FileNotFoundError, ValueError) as e:
             print(f"\033[91m✖\033[0m {type(e).__name__}: {e}")
             continue
 
